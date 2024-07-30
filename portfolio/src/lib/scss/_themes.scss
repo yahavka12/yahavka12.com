@@ -1,0 +1,131 @@
+@import '$lib/scss/_mixins.scss';
+
+@mixin base-theme {
+	@include define-color('primary', #007acc);
+	@include define-color('primary-shade', #005f8b);
+	@include define-color('primary-tint', #e6f4ff);
+
+	@include define-color('secondary', #6a1b9a);
+	@include define-color('secondary-shade', #4d1375);
+	@include define-color('secondary-tint', #f3e5ff);
+
+	@include define-color('thirdly', #ffaa00);
+	@include define-color('thirdly-shade', #995f00);
+	@include define-color('thirdly-tint', #faecad);
+
+	@include define-color('yellow', #ffd400);
+
+	@include define-color('text', #1c1e26);
+	@include define-color('text-shade', #5d5f65);
+	@include define-color('text-inverse', #ffffff);
+	@include define-color('text-inverse-shade', #9eb4b5);
+
+	@include define-color('page-background', #ffffff);
+	@include define-color('post-page-background', #f5f5f5);
+	@include define-color('card-background', #ffffff);
+	@include define-color('post-card-background', #f5f5f5);
+
+	// Used for highlights in Work Experience
+	@include define-color('usefulgroup-tint', #f8e6a0);
+	@include define-color('agora-tint', #eadbff);
+	@include define-color('freelancer-tint', #bcebeb);
+	@include define-color('logitix-tint', #ffe2ce);
+	@include define-color('sige-tint', #cce4ff);
+	@include define-color('promob-tint', #d7e6eb);
+
+	@include define-color('blockquote-background', #f5f5f5);
+	@include define-color('marker-primary-background', #007acc);
+	@include define-color('marker-secondary-background', #6a1b9a);
+
+	// Used for Callout component
+	@include define-color('callout-background', #ffffff);
+	@include define-color('callout-background--info', #007acc);
+	@include define-color('callout-accent--info', #005f8b);
+	@include define-color('callout-background--warning', #ffd400);
+	@include define-color('callout-accent--warning', #8b4500);
+	@include define-color('callout-background--error', #ff0000);
+	@include define-color('callout-accent--error', #8b0000);
+	@include define-color('callout-background--success', #008000);
+	@include define-color('callout-accent--success', #006400);
+
+	// Used for Code Block component
+	@include define-color('code-background', #f5f5f5);
+	@include define-color('code-text', #1c1e26);
+	@include define-color('code-inline-background', #f0f0f0);
+
+	--color--waves-start: rgba(var(--color--primary-rgb), 0.3);
+	--color--waves-end: rgba(var(--color--primary-rgb), 0.1);
+
+	--card-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+	--card-shadow-hover: 0px 4px 10px 8px rgb(0 0 0 / 10%);
+	--image-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06), 1px 3px 8px rgba(39, 44, 49, 0.03);
+}
+
+@mixin dark-theme {
+	@include define-color('primary', #007acc);
+	@include define-color('primary-shade', #005f8b);
+	@include define-color('primary-tint', #191a29);
+
+	@include define-color('secondary', #6a1b9a);
+	@include define-color('secondary-shade', #4d1375);
+	@include define-color('secondary-tint', #191a29);
+
+	@include define-color('thirdly', #ffaa00);
+	@include define-color('thirdly-shade', #995f00);
+	@include define-color('thirdly-tint', #191a29);
+
+	@include define-color('yellow', #ffd400);
+
+	@include define-color('text', #ffffff);
+	@include define-color('text-shade', #bfbfbf);
+	@include define-color('text-inverse', #1c1e26);
+	@include define-color('text-inverse-shade', #5d5f65);
+
+	@include define-color('page-background', #1e1e1e);
+	@include define-color('post-page-background', #252526);
+	@include define-color('card-background', #1e1e1e);
+	@include define-color('post-card-background', #252526);
+
+	// Used for highlights in Work Experience
+	@include define-color('usefulgroup-tint', #8e740b);
+	@include define-color('agora-tint', #3d009e);
+	@include define-color('freelancer-tint', #1d6262);
+	@include define-color('logitix-tint', #924817);
+	@include define-color('sige-tint', #003e85);
+	@include define-color('promob-tint', #2b4a55);
+
+	@include define-color('blockquote-background', #2d2d2d);
+	@include define-color('marker-primary-background', #005f8b);
+	@include define-color('marker-secondary-background', #4d1375);
+
+	// Used for Callout component
+	@include define-color('callout-background', #1e1e1e);
+	@include define-color('callout-background--info', #005f8b);
+	@include define-color('callout-accent--info', #007acc);
+	@include define-color('callout-background--warning', #8b4500);
+	@include define-color('callout-accent--warning', #ffd700);
+	@include define-color('callout-background--error', #8b0000);
+	@include define-color('callout-accent--error', #ff0000);
+	@include define-color('callout-background--success', #006400);
+	@include define-color('callout-accent--success', #008000);
+
+	@include define-color('code-inline-background', #2d2d2d);
+}
+
+:root {
+	@include base-theme;
+
+	&[data-theme='light'] {
+		@include base-theme;
+	}
+
+	&[data-theme='dark'] {
+		@include dark-theme;
+	}
+
+	&[data-theme='auto'] {
+		@media (prefers-color-scheme: dark) {
+			@include dark-theme;
+		}
+	}
+}
